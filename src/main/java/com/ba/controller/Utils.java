@@ -12,7 +12,7 @@ public class Utils {
 		System.out.println("Port" + getenv("CUSTOMER_SERVICE_PORT"));
 		
 		if (!isEmpty(getenv("CUSTOMER_SERVICE_HOST")) // check kubernetes service 
-				&& !isEmpty(getenv("EMPLOYEE_APP_SERVICE_PORT")))
+				&& !isEmpty(getenv("CUSTOMER_SERVICE_PORT")))
 			baseUrl = "http://" + getenv("CUSTOMER_SERVICE_HOST") + ":" + System.getenv("CUSTOMER_SERVICE_PORT"); 
 		
 		if (isEmpty(baseUrl)) { // check system properties
