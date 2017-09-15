@@ -3,17 +3,17 @@ package com.ba.controller;
 import static java.lang.System.getenv;
 
 public class Utils {
-	private static final String CUSTOMER_ENDPOINT_KEY = "CUSTOMER_ENDPOINT";
+	private static final String CUSTOMER_ENDPOINT_KEY = "SB_REST_ENDPOINT";
 	
 	public static String getCustomerEndpoint(String resourcePath) {
 		String baseUrl = "";
 		
-		System.out.println("Host" + getenv("CUSTOMER_SERVICE_HOST"));
-		System.out.println("Port" + getenv("CUSTOMER_SERVICE_PORT"));
+		System.out.println("Host" + getenv("SB_REST_SERVICE_HOST"));
+		System.out.println("Port" + getenv("SB_REST_SERVICE_PORT"));
 		
-		if (!isEmpty(getenv("CUSTOMER_SERVICE_HOST")) // check kubernetes service 
-				&& !isEmpty(getenv("CUSTOMER_SERVICE_PORT")))
-			baseUrl = "http://" + getenv("CUSTOMER_SERVICE_HOST") + ":" + System.getenv("CUSTOMER_SERVICE_PORT"); 
+		if (!isEmpty(getenv("SB_REST_SERVICE_HOST")) // check kubernetes service 
+				&& !isEmpty(getenv("SB_REST_SERVICE_PORT")))
+			baseUrl = "http://" + getenv("SB_REST_SERVICE_HOST") + ":" + System.getenv("SB_REST_SERVICE_PORT"); 
 		
 		if (isEmpty(baseUrl)) { // check system properties
 			baseUrl = System.getProperty(CUSTOMER_ENDPOINT_KEY);
