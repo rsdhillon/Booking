@@ -51,15 +51,15 @@ public class BookingController {
 		return bookings;
 	}
 	
-	private String getCustomer() {
+	private Customer getCustomer() {
 		
 //		restTemplate.get
 		System.out.println(restTemplate);
 		
-		String cust = restTemplate.getForObject(
-				Utils.getCustomerEndpoint("/greeting"), String.class);
+		Customer cust = restTemplate.getForObject(
+				Utils.getCustomerEndpoint("/customers"), Customer.class);
 		
-		
+		System.out.println(cust.toString());
 //		ResponseEntity<Customer> response = restTemplate
 	//			.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
 		
