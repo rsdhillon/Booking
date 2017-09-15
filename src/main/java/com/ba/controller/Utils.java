@@ -3,24 +3,27 @@ package com.ba.controller;
 import static java.lang.System.getenv;
 
 public class Utils {
-	private static final String CUSTOMER_ENDPOINT_KEY = "SB_REST_ENDPOINT";
+	private static final String ENDPOINT_KEY = "CUSTOMER_ENDPOINT";
+	private static final String SERVICE_NAME = "CUSTOMER_SERVICE";
+	private static final String SERVICE_NAME_HOST = SERVICE_NAME + "_HOST";
+	private static final String SERVICE_NAME_PORT = SERVICE_NAME + "_PORT";
 	
 	public static String getCustomerEndpoint(String resourcePath) {
 		String baseUrl = "";
 		
-		System.out.println("Host" + getenv("SB_REST_SERVICE_HOST"));
-		System.out.println("Port" + getenv("SB_REST_SERVICE_PORT"));
+		System.out.println("Host" + getenv(SERVICE_NAME_HOST));
+		System.out.println("Port" + getenv(SERVICE_NAME_PORT));
 		
-		if (!isEmpty(getenv("SB_REST_SERVICE_HOST")) // check kubernetes service 
-				&& !isEmpty(getenv("SB_REST_SERVICE_PORT")))
-			baseUrl = "http://" + getenv("SB_REST_SERVICE_HOST") + ":" + System.getenv("SB_REST_SERVICE_PORT"); 
+		if (!isEmpty(getenv(SERVICE_NAME_HOST)) // check kubernetes service 
+				&& !isEmpty(getenv(SERVICE_NAME_PORT)))
+			baseUrl = "http://" + getenv(SERVICE_NAME_HOST) + ":" + System.getenv(SERVICE_NAME_PORT); 
 		
 		if (isEmpty(baseUrl)) { // check system properties
-			baseUrl = System.getProperty(CUSTOMER_ENDPOINT_KEY);
+			baseUrl = System.getProperty(ENDPOINT_KEY);
 		}
 		
 		if (isEmpty(baseUrl)) { // check environment variables
-			baseUrl = System.getenv(CUSTOMER_ENDPOINT_KEY);
+			baseUrl = System.getenv(ENDPOINT_KEY);
 		}
 		
 		if (isEmpty(baseUrl)) { // default value
