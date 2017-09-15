@@ -51,13 +51,16 @@ public class BookingController {
 		return bookings;
 	}
 	
-	private Customer getCustomer() {
+	@SuppressWarnings("unchecked")
+	private List<Customer> getCustomer() {
 		
 //		restTemplate.get
 		System.out.println(restTemplate);
 		
-		Customer cust = restTemplate.getForObject(
-				Utils.getCustomerEndpoint("/customers"), Customer.class);
+		List<Customer> cust = new ArrayList<Customer>();
+		
+		cust = restTemplate.getForObject(
+				Utils.getCustomerEndpoint("/customers"), ArrayList.class);
 		
 		System.out.println(cust.toString());
 //		ResponseEntity<Customer> response = restTemplate
