@@ -3,7 +3,6 @@ package com.ba.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,13 +49,16 @@ public class BookingController {
 	
 	private Customer getCustomer() {
 		
-		ResponseEntity<Customer> response = restTemplate
-				.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
+		Customer cust = restTemplate.getForObject(
+				Utils.getCustomerEndpoint("/customers"), Customer.class);
+		
+//		ResponseEntity<Customer> response = restTemplate
+	//			.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
 		
 		
 		//Customer cust;
 		
-		return response.getBody();
+		return cust;
 	}
 
 }
