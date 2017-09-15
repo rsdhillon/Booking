@@ -38,6 +38,10 @@ public class BookingController {
 		bookings.add(new Booking("2","Booking 2",secondBookingProducts, 290.0) );		
 	}
 	
+	public BookingController(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+	
 	@RequestMapping( method = RequestMethod.GET)
 	@ResponseBody
 	public List<Booking> retrieveAllBookings() {
@@ -50,6 +54,7 @@ public class BookingController {
 	private String getCustomer() {
 		
 //		restTemplate.get
+		System.out.println(restTemplate);
 		
 		String cust = restTemplate.getForObject(
 				Utils.getCustomerEndpoint("/greeting"), String.class);
