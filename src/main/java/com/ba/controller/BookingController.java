@@ -83,7 +83,7 @@ public class BookingController {
 		System.out.println(restTemplate);
 		
 		List<Customer> cust = new ArrayList<Customer>();
-		cust = restTemplateService.getForObject(
+		cust = restTemplate.getForObject(
 				"http://customer/customers", ArrayList.class);
 		//cust = restTemplate.getForObject(
 			//	Utils.getCustomerEndpoint("/customers"), ArrayList.class);
