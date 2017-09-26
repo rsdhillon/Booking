@@ -25,8 +25,6 @@ public class BookingController {
 	
 	private RestTemplate restTemplate;
 	
-	private RestTemplate restTemplateService;
-	
 	static {
 		
 		firstBookingProducts.add(new Product("PNRREFA","LHR-BCN",130.0));
@@ -58,20 +56,12 @@ public class BookingController {
 	@SuppressWarnings("unchecked")
 	private List<Customer> getCustomer() {
 		
-//		restTemplate.get
-		System.out.println(restTemplate);
-		
 		List<Customer> cust = new ArrayList<Customer>();
 		
 		cust = restTemplate.getForObject(
 				Utils.getCustomerEndpoint("/customers"), ArrayList.class);
 		
-		System.out.println(cust.toString());
-//		ResponseEntity<Customer> response = restTemplate
-	//			.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
-		
-		
-		//Customer cust;
+		System.out.println("Environment variable based lookup response" + cust.toString());
 		
 		return cust;
 	}
@@ -79,22 +69,12 @@ public class BookingController {
 	@SuppressWarnings("unchecked")
 	private List<Customer> getCustomerService() {
 		
-//		restTemplate.get
-		System.out.println(restTemplate);
-		
 		List<Customer> cust = new ArrayList<Customer>();
 		cust = restTemplate.getForObject(
 				"http://customer:8080/customers", ArrayList.class);
-		//cust = restTemplate.getForObject(
-			//	Utils.getCustomerEndpoint("/customers"), ArrayList.class);
 		
-		System.out.println(cust.toString());
-//		ResponseEntity<Customer> response = restTemplate
-	//			.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
-		
-		
-		//Customer cust;
-		
+		System.out.println("DNS based Lookup response" + cust.toString());
+
 		return cust;
 	}
 
