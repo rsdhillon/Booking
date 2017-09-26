@@ -25,6 +25,8 @@ public class BookingController {
 	
 	private RestTemplate restTemplate;
 	
+	private RestTemplate restTemplateService;
+	
 	static {
 		
 		firstBookingProducts.add(new Product("PNRREFA","LHR-BCN",130.0));
@@ -48,6 +50,8 @@ public class BookingController {
 		
 		getCustomer();
 		
+		getCustomerService();
+		
 		return bookings;
 	}
 	
@@ -61,6 +65,28 @@ public class BookingController {
 		
 		cust = restTemplate.getForObject(
 				Utils.getCustomerEndpoint("/customers"), ArrayList.class);
+		
+		System.out.println(cust.toString());
+//		ResponseEntity<Customer> response = restTemplate
+	//			.postForEntity(Utils.getCustomerEndpoint("/customers"), "", Customer.class);
+		
+		
+		//Customer cust;
+		
+		return cust;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private List<Customer> getCustomerService() {
+		
+//		restTemplate.get
+		System.out.println(restTemplate);
+		
+		List<Customer> cust = new ArrayList<Customer>();
+		cust = restTemplateService.getForObject(
+				"http://customer/customers", ArrayList.class);
+		//cust = restTemplate.getForObject(
+			//	Utils.getCustomerEndpoint("/customers"), ArrayList.class);
 		
 		System.out.println(cust.toString());
 //		ResponseEntity<Customer> response = restTemplate
