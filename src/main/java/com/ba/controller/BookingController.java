@@ -46,7 +46,7 @@ public class BookingController {
 	@ResponseBody
 	public List<Booking> retrieveAllBookings() {
 		
-		getCustomer();
+		//getCustomer();
 		
 		getCustomerService();
 		
@@ -71,7 +71,7 @@ public class BookingController {
 		
 		List<Customer> cust = new ArrayList<Customer>();
 		cust = restTemplate.getForObject(
-				"http://customer:8080/customers", ArrayList.class);
+				"http://customer.sb-ms-aw:8080/customers", ArrayList.class);
 		
 		System.out.println("DNS based Lookup response" + cust.toString());
 
