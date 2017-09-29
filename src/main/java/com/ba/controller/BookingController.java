@@ -73,7 +73,7 @@ public class BookingController {
 		cust = restTemplate.getForObject(
 				"http://customer.sb-ms-aw:8080/customers", ArrayList.class);
 		
-		System.out.println("DNS based Lookup response" + cust.toString());
+		System.out.println("Namespace based Lookup response" + cust.toString());
 
 		return cust;
 	}
