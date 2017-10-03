@@ -46,7 +46,7 @@ public class BookingController {
 	@ResponseBody
 	public List<Booking> retrieveAllBookings() {
 		
-		//getCustomer();
+		getCustomer();
 		
 		getCustomerService();
 		
