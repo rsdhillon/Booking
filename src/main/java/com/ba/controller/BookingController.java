@@ -73,7 +73,7 @@ public class BookingController {
 		
 		List<Customer> cust = new ArrayList<Customer>();
 		
-		System.out.println("Env Variable is " + System.getenv(CUST_ENDPOINT_KEY));
+		System.out.println("Environment Variable is " + System.getenv(CUST_ENDPOINT_KEY));
 		cust = restTemplate.getForObject(
 				"http://" + System.getenv(CUST_ENDPOINT_KEY) + "/customers", ArrayList.class);
 		
