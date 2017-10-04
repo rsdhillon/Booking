@@ -70,6 +70,8 @@ public class BookingController {
 	private List<Customer> getCustomerService() {
 		
 		List<Customer> cust = new ArrayList<Customer>();
+		
+		System.out.println("Env Variable is " + System.getenv("CUSTOMER_SERVICE_EP"));
 		cust = restTemplate.getForObject(
 				"http://customer.sb-ms-aw:8080/customers", ArrayList.class);
 		
