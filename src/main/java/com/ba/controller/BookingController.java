@@ -17,6 +17,8 @@ import com.ba.domain.customer.Customer;
 @RequestMapping("/bookings")
 public class BookingController {
 	
+	private static final String CUST_ENDPOINT_KEY = "CUSTOMER_SERVICE_EP";
+	
 	private static List<Booking> bookings = new ArrayList<Booking>();
 	
 	private static List<Product> firstBookingProducts  = new ArrayList<Product>();
@@ -71,9 +73,9 @@ public class BookingController {
 		
 		List<Customer> cust = new ArrayList<Customer>();
 		
-		System.out.println("Env Variable is " + System.getenv("CUSTOMER_SERVICE_EP"));
+		System.out.println("Env Variable is " + System.getenv(CUST_ENDPOINT_KEY));
 		cust = restTemplate.getForObject(
-				"http://customer.sb-ms-aw:8080/customers", ArrayList.class);
+				"http://" + System.getenv(CUST_ENDPOINT_KEY) + "/customers", ArrayList.class);
 		
 		System.out.println("Namespace based Lookup response" + cust.toString());
 
